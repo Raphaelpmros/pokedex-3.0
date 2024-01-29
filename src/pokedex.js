@@ -9,7 +9,7 @@ const pokemonNumber = document.querySelector('.pokemon_number');
 
 const fetchPokemon = async (pokemon) => {
   const APIResponse = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/${pokemon}`
+    `https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`
   );
   const data = await APIResponse.json();
   return data;
@@ -24,5 +24,6 @@ const renderPokemon = async (pokemon) => {
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-    renderPokemon(input.value)
+    renderPokemon(input.value);
+    input.value = '';
 })
